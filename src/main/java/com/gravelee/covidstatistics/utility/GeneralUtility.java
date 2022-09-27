@@ -35,11 +35,11 @@ public class GeneralUtility {
 	private static final String FILE_NAME = "countries-aggregated.csv";
 	
 	/**
-	 * 	This is the method that reads the data online or locally 
-	 * 	and then returns the appropriate list or our records.
-	 * 	The country variable can have an exceptional case where 
-	 * 	in some records two words with commas will be added to
-	 *  the country name like "Korea, south,".
+	 * 	Reads the data online or locally and then returns the 
+	 *  appropriate list of our records. The country variable 
+	 *  can have an exceptional case where in some records two 
+	 *  words with commas will be added to the country name like 
+	 *  "Korea, south,".
 	 * 
 	 * 	@param 	isRemote				( if the data will be red remotely or not)
 	 * 	@param 	cumulativeData			( if the data passed are cumulative)
@@ -84,7 +84,11 @@ public class GeneralUtility {
 		    		
 		    		list.add( new Record( 
 	            			LocalDate.parse( strArray[0]),
-	            			strArray[2] + strArray[1],
+	            			
+	            			strArray[2].replace(' ',(char) 0)
+	            				.replace('\"', ' ') 
+	            				+ strArray[1].replace('\"',(char) 0),
+	            				
 	            			Long.parseLong(strArray[3]),
 	            			Long.parseLong(strArray[4]),
 	            			Long.parseLong(strArray[5])));
@@ -105,7 +109,7 @@ public class GeneralUtility {
 	}
 	
 	/**
-	 * 	This method is called to downloads/updates the data set locally.
+	 * 	Downloads/updates the data set from the online source.
 	 * 
 	 * 	@throws MalformedURLException	( when the url we gave does not exist or is corrupt)
 	 * 	@throws FileNotFoundException	( only when there is a same name file that is a director)
@@ -124,7 +128,7 @@ public class GeneralUtility {
 	}
 	
 	/**
-	 * 	This method change the cumulative data to none cumulative.
+	 * 	Morphs the cumulative data to none cumulative and returns them.
 	 * 
 	 * 	@param 	list			( the list to be converted)
 	 * 	@return	List<Record>	( the converted list after the process)
@@ -137,6 +141,7 @@ public class GeneralUtility {
 		
 		List<String> countryNames = list.stream()
 			.map(Record::getCountryName)
+			.distinct()
 			.collect( Collectors.toList());
 		
 		for( String country: countryNames) {

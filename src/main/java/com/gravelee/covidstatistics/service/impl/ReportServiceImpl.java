@@ -14,13 +14,13 @@ import com.gravelee.covidstatistics.domain.Record;
 import com.gravelee.covidstatistics.service.ReportService;
 
 /**
- * 	This is the implementation of ReportService interface.
+ * 	The implementation of ReportService interface.
  * 
  * 	@author Grproth
  */
 public class ReportServiceImpl implements ReportService{
 
-	private List<Record> list;
+	private final List<Record> list;
 	
 	public ReportServiceImpl( List<Record> list){
 		
@@ -49,7 +49,7 @@ public class ReportServiceImpl implements ReportService{
 				
 		}
 		
-		// This works only for none cumulative data (it takes time).
+		// This works only for none cumulative data.
 		//*
 		
 		Map<String,Long> maxConfirmedPerCountry = new HashMap<>();
@@ -204,7 +204,7 @@ public class ReportServiceImpl implements ReportService{
 			return maxDeathsPerCountry;
 		}
 		
-		// This works only for none cumulative data (it takes time).
+		// This works only for none cumulative data.
 		//*
 		
 		for( String country : countryNames) {
@@ -318,7 +318,7 @@ public class ReportServiceImpl implements ReportService{
 			return maxesPerCountry;
 		}
 		
-		// This works only for none cumulative data (it takes time).
+		// This works only for none cumulative data.
 		
 		for( String country: countryNames) {
 			

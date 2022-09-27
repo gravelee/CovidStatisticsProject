@@ -7,9 +7,9 @@ import java.util.Map;
 import com.gravelee.covidstatistics.domain.Record;
 
 /**
- * 	This interface defines all the appropriate
+ * 	The interface defines all the appropriate
  * 	manipulation methods that has been asked
- *  from the the specification document. 
+ *  from the specification document. 
  * 
  * 	@author Grproth
  */

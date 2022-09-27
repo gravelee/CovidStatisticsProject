@@ -12,12 +12,20 @@ import com.gravelee.covidstatistics.service.impl.ReportServiceImpl;
 import com.gravelee.covidstatistics.utility.GeneralUtility;
 
 /**
- * 	This is the driver class of our application and here 
- * 	we also test our data set. The project in general reads
+ * 	The driver class of our application and here we also 
+ *  test our data set. The project in general reads
  * 	specific covid cumulative data from a url or a file
  *  locally interprets those data based on the services
  *  implemented and here we print those query answers to
- *  the terminal.
+ *  the terminal.j This project can be adapted for any
+ *  data set but you need to implement the model class
+ *  of your data (like Record.java). The application can
+ *  interpret cumulative and none cumulative data sets.
+ *  
+ *  If the application becomes bigger we will move the
+ *  code of main into a new class like TestQeuries and
+ *  from here we will call the method that will 
+ *  implement that.
  * 
  * 	@author Grproth
  */
